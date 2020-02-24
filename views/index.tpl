@@ -11,12 +11,16 @@
     body {
         margin: 0px;
         padding: 0px;
+<<<<<<< HEAD
         background-image: url("/static/img/background1.jpg");
         background-size:cover
+=======
+>>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
     }
     .layui-form-label{
         width:200px
     }
+<<<<<<< HEAD
     .layui-btn.left{
         background-color: #2F4F4F;
     }
@@ -32,6 +36,18 @@
         margin-top: 20px;
         position: relative;
         overflow: auto;
+=======
+    .operation{
+        float: left;
+        width: 20%;
+    }
+    .map_area{
+      float: right;
+      width:70%;
+      margin-left: 20px;
+      margin-top: 20px;
+      position: relative;
+>>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
     }
     .map{
         z-index: -1;
@@ -64,6 +80,7 @@
     </div>
     <div class="map_area">
         <img class="map" id="now_map" src="/static/img/maps/map1.jpg" alt="地图" style="position: absolute;z-index: -1">
+
     </div>
 </div>
 <div id = "pl" hidden>
@@ -183,7 +200,7 @@
             else if(dir_list[4] == 'medium'){
                 size = 30
             }
-            var append = '<img class="layui-circle monster" src="'+dir+'" width="'+size+'" height="'+size+'" data-name="monster">'
+            var append = '<img class="layui-circle monster" src="'+dir+'" width="'+size+'" height="'+size+'">'
             append += '</img>'
             $(".map_area").append(append)
         })
@@ -202,6 +219,8 @@
             layer.closeAll()
         })
 
+=======
+>>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
         $("#add_player").click(function () {
             layer.open({
                 type:1,
@@ -213,18 +232,16 @@
         $("#pl_submit").click(function () {
             layer.closeAll()
             var color = $("#pl_color").val()
-            var append = '<span class="layui-circle">'
-            append += '<i class="layui-icon layui-icon-friends monster" style="font-size: 30px; color: '+color+';" data-name="player"></i> '
+            var append = '<span class="layui-circle monster">'
+            append += '<i class="layui-icon layui-icon-friends" style="font-size: 30px; color: '+color+';"></i> '
             append += '</span>'
             $(".map_area").append(append)
         })
-
         $("#help").click(function () {
             layer.alert("添加怪物或玩家后点击该元素，使用上下左右方向键移动，小键盘+-号缩放，delete键删除。在上传地图后需要刷新页面。")
         })
         $(document).on('click', '.monster', function (event) {
             var ball = $(this)
-            var name = $(this).data("name")
             function moveX(step){
                 var left = parseInt(ball.css('margin-left'))
                 if(step > 0){

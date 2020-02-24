@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="3ac2d11f-087a-49db-a6e7-b8f1f9cb2fb0" name="默认更改列表" comment="" />
+=======
+    <list default="true" id="77639326-5bda-4353-b4b1-ccf93e812c1a" name="默认更改列表" comment="" />
+>>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -35,6 +40,19 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+=======
+  <component name="GOROOT" path="C:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1X4xwFYyLywodo6LsunzLtTTDfX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+>>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -48,6 +66,7 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Go Build.go build Trpg">
     <configuration name="go build Trpg" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="Trpg" />
@@ -73,6 +92,8 @@
       </list>
     </recent_temporary>
   </component>
+=======
+>>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -81,17 +102,24 @@
       <map>
         <entry key="MAIN">
           <value>
+<<<<<<< HEAD
             <State>
               <option name="COLUMN_ORDER" />
             </State>
+=======
+            <State />
+>>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
           </value>
         </entry>
       </map>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/static/js/gridster.js" />
     </ignored-roots>
   </component>
+=======
+>>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
 </project>
