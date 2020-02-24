@@ -11,16 +11,12 @@
     body {
         margin: 0px;
         padding: 0px;
-<<<<<<< HEAD
         background-image: url("/static/img/background1.jpg");
         background-size:cover
-=======
->>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
     }
     .layui-form-label{
         width:200px
     }
-<<<<<<< HEAD
     .layui-btn.left{
         background-color: #2F4F4F;
     }
@@ -29,25 +25,17 @@
         width: 20%;
         margin-left: 10px;
     }
-    .map_area{
+    .map_area {
         width: 1000px;
         height: 800px;
         margin-left: 20px;
         margin-top: 20px;
         position: relative;
         overflow: auto;
-=======
+    }
     .operation{
         float: left;
         width: 20%;
-    }
-    .map_area{
-      float: right;
-      width:70%;
-      margin-left: 20px;
-      margin-top: 20px;
-      position: relative;
->>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
     }
     .map{
         z-index: -1;
@@ -62,6 +50,12 @@
 <body>
 <div class="contain">
     <div class="layui-form operation">
+        <div class="layui-form-item">
+            <button class="layui-btn layui-btn left" id="map_magnify">放大地图</button>
+        </div>
+        <div class="layui-form-item">
+            <button class="layui-btn layui-btn left" id="map_shrink">缩小地图</button>
+        </div>
         <div class="layui-form-item">
             <button class="layui-btn layui-btn left" id="add_monster">添加怪物</button>
         </div>
@@ -80,60 +74,67 @@
     </div>
     <div class="map_area">
         <img class="map" id="now_map" src="/static/img/maps/map1.jpg" alt="地图" style="position: absolute;z-index: -1">
-
     </div>
 </div>
 <div id = "pl" hidden>
     <div class="layui-form">
         <center>
-        <div class="layui-form-item" style="margin-top: 10px">
-            <label class="layui-form-label">请选择玩家颜色：</label>
-            <div class="layui-input-inline">
-                <select id="pl_color" lay-verify="required">
-                    <option value="red" selected>红色</option>
-                    <option value="blue">蓝色</option>
-                    <option value="yellow">黄色</option>
-                    <option value="green">绿色</option>
-                    <option value="pink">粉色</option>
-                </select>
+            <div class="layui-form-item" style="margin-top: 10px">
+                <label class="layui-form-label">请选择玩家头像：</label>
+                <div class="layui-input-inline">
+                    <select id="players" lay-filter="sel_player" lay-verify="required">
+                        <option value="">请选择头像</option>
+                        {{range $key, $val := .players}}
+                            <option value="{{$key}}">{{$val}}</option>
+                        {{end}}
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" type="button" id="pl_submit">确认</button>
-                <button type="button" class="layui-btn layui-btn-primary cancel">取消</button>
+            <div id="player_view" style="margin-top: 10px">
             </div>
-        </div>
+            <div class="layui-form-item" style="margin-top: 10px">
+                <div class="layui-input-block">
+                    <button class="layui-btn" type="button" id="pl_submit">确认</button>
+                    <button type="button" class="layui-btn layui-btn-primary cancel">取消</button>
+                </div>
+            </div>
         </center>
     </div>
 </div>
 <div id = "mon" hidden>
     <div class="layui-form">
         <center>
-        <div class="layui-form-item" style="margin-top: 10px">
-            <label class="layui-form-label">请选择怪物：</label>
-            <div class="layui-input-inline">
-                <select id="monster_size" lay-verify="required" lay-search>
-                    <option value="" selected>请选择怪物</option>
-                    <optgroup label="中体型">
-                    {{range $key, $val := .medium_monsters}}
-                        <option value="{{$key}}">{{$val}}</option>
-                    {{end}}
-                    </optgroup>
-                    <optgroup label="大体型">
-                    {{range $key, $val := .big_monsters}}
-                        <option value="{{$key}}">{{$val}}</option>
-                    {{end}}
-                    </optgroup>
-                </select>
+            <div class="layui-form-item" style="margin-top: 10px">
+                <label class="layui-form-label">请选择怪物：</label>
+                <div class="layui-input-inline">
+                    <select id="monster_size" lay-filter="sel_monster" lay-verify="required" lay-search>
+                        <option value="" selected>请选择怪物</option>
+                        <optgroup label="中体型">
+                        {{range $key, $val := .medium_monsters}}
+                            <option value="{{$key}}">{{$val}}</option>
+                        {{end}}
+                        </optgroup>
+                        <optgroup label="大体型">
+                        {{range $key, $val := .big_monsters}}
+                            <option value="{{$key}}">{{$val}}</option>
+                        {{end}}
+                        </optgroup>
+                        <optgroup label="超大体形">
+                            {{range $key, $val := .huge_monsters}}
+                                <option value="{{$key}}">{{$val}}</option>
+                            {{end}}
+                        </optgroup>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" type="button" id="monster_submit">确认</button>
-                <button type="button" class="layui-btn layui-btn-primary cancel">取消</button>
+            <div id="monster_view" style="margin-top: 10px">
             </div>
-        </div>
+            <div class="layui-form-item" style="margin-top: 10px">
+                <div class="layui-input-block">
+                    <button class="layui-btn" type="button" id="monster_submit">确认</button>
+                    <button type="button" class="layui-btn layui-btn-primary cancel">取消</button>
+                </div>
+            </div>
         </center>
     </div>
 </div>
@@ -163,6 +164,7 @@
 <script>
     layui.use(['form','layer', 'upload'],function () {
         var $ = layui.jquery
+        var form = layui.form
         var upload = layui.upload;
         upload.render({
             elem: '#upload_map',
@@ -173,15 +175,47 @@
                 layer.alert(res.data.src)
             }
         })
+        $("#map_magnify").click(function () {
+            var width = parseInt($(".map_area").css('width'))
+            var height = parseInt($(".map_area").css('height'))
+            $(".map_area").css('width', width+20+'px')
+            $(".map_area").css('height', height+20+'px')
+        })
+        $("#map_shrink").click(function () {
+            var width = parseInt($(".map_area").css('width'))
+            var height = parseInt($(".map_area").css('height'))
+            $(".map_area").css('width', width-20+'px')
+            $(".map_area").css('height', height-20+'px')
+        })
+
+        form.on('select(sel_player)', function (data) {
+            var dir = data.value
+            var append = "<img src="+dir+">"
+            append += "</img>"
+            $("#player_view").empty()
+            $("#player_view").append(append)
+        })
+
+        form.on('select(sel_monster)', function (data) {
+            var dir = data.value
+            var append = "<img src="+dir+">"
+            append += "</img>"
+            $("#monster_view").empty()
+            $("#monster_view").append(append)
+        })
+
         $("#add_monster").click(function () {
             layer.open({
                 type:1,
                 content:$("#mon"),
-                area:['30%', '50%']
+                area:['30%', '40%'],
+                title: "添加怪物"
             })
         })
 
         $(".cancel").click(function () {
+            $("#player_view").empty()
+            $("#monster_view").empty()
             layer.closeAll()
         })
 
@@ -199,6 +233,9 @@
             }
             else if(dir_list[4] == 'medium'){
                 size = 30
+            }
+            else{
+                size = 90
             }
             var append = '<img class="layui-circle monster" src="'+dir+'" width="'+size+'" height="'+size+'">'
             append += '</img>'
@@ -218,48 +255,33 @@
             $("#now_map").attr("src", map_dir)
             layer.closeAll()
         })
-
-=======
->>>>>>> a45d6d9fca4cd5bcc1cb658a2c1fbc37be3e268c
         $("#add_player").click(function () {
             layer.open({
                 type:1,
                 content:$("#pl"),
-                area:['30%', '30%']
+                area:['30%', '40%'],
+                title: "添加玩家"
             })
         })
 
         $("#pl_submit").click(function () {
+            var dir = $("#players").val()
+            if(dir == ''){
+                layer.alert("请选择玩家头像")
+                return false
+            }
             layer.closeAll()
-            var color = $("#pl_color").val()
-            var append = '<span class="layui-circle monster">'
-            append += '<i class="layui-icon layui-icon-friends" style="font-size: 30px; color: '+color+';"></i> '
-            append += '</span>'
+            var size = 30
+            var append = '<img class="monster" src="'+dir+'" width="'+size+'" height="'+size+'">'
+            append += '</img>'
             $(".map_area").append(append)
         })
         $("#help").click(function () {
-            layer.alert("添加怪物或玩家后点击该元素，使用上下左右方向键移动，小键盘+-号缩放，delete键删除。在上传地图后需要刷新页面。")
+            layer.alert("添加怪物或玩家后点击该元素，使用键盘+-号缩放，delete键删除。使用鼠标拖动怪物或玩家，移动到目标地点后需点击一次鼠标停止拖拽。在上传地图后需要刷新页面。")
         })
+        //对玩家或者怪物进行变大变小或删除操作
         $(document).on('click', '.monster', function (event) {
             var ball = $(this)
-            function moveX(step){
-                var left = parseInt(ball.css('margin-left'))
-                if(step > 0){
-                    ball.css('margin-left', left+6+'px')
-                }
-                else{
-                    ball.css('margin-left', left-6+'px')
-                }
-            }
-            function moveY(step){
-                var top = parseInt(ball.css('margin-top'))
-                if(step > 0){
-                    ball.css('margin-top', top-6+'px')
-                }
-                else{
-                    ball.css('margin-top', top+6+'px')
-                }
-            }
             function increase(){
                 if(name == 'player'){
                     var size = parseInt(ball.css('font-size'))
@@ -286,18 +308,6 @@
                 e.preventDefault();
                 var e = e || window.event
                 switch(e.keyCode){
-                    case 37:
-                        moveX(-1);
-                        break;
-                    case 38:
-                        moveY(1);
-                        break;
-                    case 39:
-                        moveX(1);
-                        break;
-                    case 40:
-                        moveY(-1);
-                        break;
                     case 46:
                         ball.remove();
                         break;
@@ -316,6 +326,42 @@
                 }
             }
         })
+        //拖拽玩家或者怪物
+        $(document).on('mousedown', '.monster', function (event) {
+            var ball = $(this)
+            let e = event || window.event;
+            let offsetX = e.offsetX;//获取鼠标点击点距离元素（box）左边的距离
+            let offsetY = e.offsetY;//获取鼠标点击点距离元素（box）上边的距离
+            document.onmousemove = function (event) {
+                let e = event || window.event;
+                let map_left = $('#now_map').offset().left;
+                let map_top = $("#now_map").offset().top;
+                let clientX = e.clientX;//获取鼠标点左边距离屏幕的水平距离
+                let clientY = e.clientY;//获取鼠标点上边距离屏幕的垂直距离
+                let clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+                let clientHeght = document.documentElement.clientHeight || document.body.clientHeight;
+                let left = clientX - offsetX;
+                let top = clientY - offsetY;
+                //此处还可加边界判断
+                if(left<=0){
+                    left = 0;
+                }
+                else if(left>=clientWidth-300){
+                    left = clientWidth-300;
+                }
+                if(top<=0){
+                    top = 0;
+                }
+                else if(top >= clientHeght-500){
+                    top = clientHeght - 500;
+                }
+                ball[0].style.left = left - map_left + 'px'
+                ball[0].style.top = top - map_top +'px'
+            }
+        })
+        document.onmouseup = function () {//当鼠标抬起时执行，即不让拖拽
+            document.onmousemove = null;
+        }
     })
 </script>
 </body>

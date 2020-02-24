@@ -16,17 +16,23 @@ type MainController struct {
 func (c *MainController) Get() {
 	medium_monsters := make(map[string]string)//中体型怪物
 	big_monsters := make(map[string]string)//小体型怪物
+	huge_monsters := make(map[string]string)
 	maps := make(map[string]string)//地图
+	players := make(map[string]string)//玩家头像
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
 		log.Fatal(err)
 	}
 	big_monsters = getFilelist(dir+"/static/img/monsters/big", "/static/img/monsters/big")
 	medium_monsters = getFilelist(dir+"/static/img/monsters/medium", "/static/img/monsters/medium")
+	huge_monsters = getFilelist(dir+"/static/img/monsters/huge", "/static/img/monsters/huge")
 	maps = getFilelist(dir+"/static/img/maps", "/static/img/maps")
+	players = getFilelist(dir+"/static/img/player", "/static/img/player")
 	c.Data["medium_monsters"] = medium_monsters
 	c.Data["big_monsters"] = big_monsters
+	c.Data["huge_monsters"] = huge_monsters
 	c.Data["maps"] = maps
+	c.Data["players"] = players
 	c.TplName = "index.tpl"
 }
 
